@@ -5,6 +5,15 @@ import time
 
 wn = turtle.Screen()
 wn.bgcolor("white")
+turtle.write("Instructions:",align= "center", font=("Arial",28 , "normal"))
+time.sleep(3)
+turtle.clear()
+turtle.write("blue turtle: left, right, up arrows",align= "center", font=("Arial", 15, "normal"))
+time.sleep(3)
+turtle.clear()
+turtle.write("red turtle: w, a, d",align= "right", font=("Arial", 15, "normal"))
+time.sleep(3)
+turtle.clear()
 
 #setting borders
 border = turtle.Turtle()
