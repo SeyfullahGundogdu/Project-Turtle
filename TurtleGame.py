@@ -5,15 +5,6 @@ import time
 
 wn = turtle.Screen()
 wn.bgcolor("white")
-turtle.write("Instructions:",align= "center", font=("Arial",28 , "normal"))
-time.sleep(3)
-turtle.clear()
-turtle.write("blue turtle: left, right, up arrows",align= "center", font=("Arial", 15, "normal"))
-time.sleep(3)
-turtle.clear()
-turtle.write("red turtle: w, a, d",align= "right", font=("Arial", 15, "normal"))
-time.sleep(3)
-turtle.clear()
 
 #setting borders
 border = turtle.Turtle()
@@ -42,9 +33,6 @@ line1.forward(600)
 line1.left(90)
 line1.forward(700)
 
-
-
-
 #setting players
 player1 = turtle.Turtle()
 player1.left(90)
@@ -59,7 +47,6 @@ player2.penup()
 player2.setposition(0,330)
 player2.color("red")
 player2.shape("turtle")
-dusmanlar = []
 
 p_speed = 20
 x = 0
@@ -137,9 +124,6 @@ def p1Fire():
     p1bullet.sety(player1.ycor())
     p1bullet.showturtle()
     
-
-    
-    
 def tekrar():
     print(leftC)  
     if (leftC):
@@ -163,12 +147,11 @@ def tekrar():
             p1bullet.ht()
             p2bullet.ht()
             turtle.color("blue")
-            turtle.write("GAME OVER BLUE TURTLE WON",align= "center", font=("Arial", 26, "normal"))
+            turtle.write("GAME OVER BLUE TURTLE WON!",align= "center", font=("Arial", 26, "normal"))
             time.sleep(3)
             turtle.bye()
         else:
-            p1bullet.ht()
-            
+            p1bullet.ht()        
     if(p2bullet.ycor() > -330):
         p2bullet.sety(p2bullet.ycor() - 40)
     else:
@@ -181,21 +164,39 @@ def tekrar():
             p1bullet.ht()
             p2bullet.ht()
             turtle.color("red")
-            turtle.write("GAME OVER RED TURTLE WON",align= "center", font=("Arial", 26, "normal"))
+            turtle.write("GAME OVER RED TURTLE WON!",align= "center", font=("Arial", 26, "normal"))
             time.sleep(3)
             turtle.bye()
         else:
             p2bullet.ht()
-
-    
-    
-    
-    
+    if not (-350 < player2.xcor() < 350):
+        border.clear()
+        line1.clear()
+        player1.ht()
+        player2.ht()
+        p1bullet.ht()
+        p2bullet.ht()
+        turtle.color("BLUE")
+        turtle.write("GAME OVER RED TURTLE HAS GONE OUT OF FRAME!",align= "center", font=("Arial", 20, "normal"))
+        turtle.ht()
+        time.sleep(3)
+        turtle.bye()    
+    if not (-350 < player1.xcor() < 350):
+        border.clear()
+        line1.clear()
+        player1.ht()
+        player2.ht()
+        p1bullet.ht()
+        p2bullet.ht()
+        turtle.color("red")
+        turtle.write("GAME OVER BLUE TURTLE HAS GONE OUT OF FRAME!",align= "center", font=("Arial", 20, "normal"))
+        turtle.ht()
+        time.sleep(3)
+        turtle.bye()    
     turtle.ontimer(tekrar,1)
     
 tekrar()
-
-    
+  
 wn.listen()
 wn.onkeypress(rightP, "Right")
 wn.onkeypress(leftP, "Left")
@@ -207,3 +208,4 @@ wn.onkeyrelease(rightR2, "d")
 wn.onkeyrelease(leftR2, "a")
 wn.onkeypress(p1Fire, "Up")
 wn.onkeypress(p2Fire, "w")
+turtle.mainloop()
